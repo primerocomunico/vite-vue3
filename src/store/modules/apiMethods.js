@@ -40,7 +40,7 @@ export default {
         commit('editFrontName', )
         this.getAlert(
           "success",
-          `LA NOMBRE ${res.data.title} HA SIDO ACTUALIZADO`
+          `EL NOMBRE ${res.data.title} HA SIDO ACTUALIZADO`
         );
       })
       .catch(e => {
