@@ -1,6 +1,6 @@
 module.exports = {
   purge: {
-    content: ['./public/**/*.html', './src/**/*.vue'],
+    content: ['./public/**/*.html', './src/**/*.html', './src/**/*.vue'],
     options: {
       whitelistPatterns: [
         /-(leave|enter|appear)(|-(to|from|active))$/,
