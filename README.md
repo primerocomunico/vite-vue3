@@ -12,3 +12,6 @@ Summary of used technologies:
 How to use it:
 - npm install
 - npm run dev
+
+Test online by netlify:
+https://60b88fdc0fcb410008912a69--mystifying-meninsky-639991.netlify.app/
