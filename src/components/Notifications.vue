@@ -1,7 +1,8 @@
-/<template>
+/
+<template>
   <div>
-      <div
-      v-if="store.state.user.newNotification || store.state.user.editNotification"
+    <div
+      v-if="newNotification || editNotification"
       class="w-full lg:w-1/2 pt-3 pr-3"
     >
       <div
@@ -31,10 +32,16 @@
             leading-normal
           "
         >
-          <div v-if="store.state.user.newNotification" class="text-black font-bold text-xl mb-2 leading-tight">
+          <div
+            v-if="newNotification"
+            class="text-black font-bold text-xl mb-2 leading-tight"
+          >
             Alguien ha creado un nuevo nombre:
           </div>
-          <div v-if="store.state.user.editNotification" class="text-black font-bold text-xl mb-2 leading-tight">
+          <div
+            v-if="editNotification"
+            class="text-black font-bold text-xl mb-2 leading-tight"
+          >
             Alguien quiere editar el nombre:
           </div>
           <p class="text-grey-darker text-base">{{ completeName }}</p>
@@ -44,18 +51,26 @@
   </div>
 </template>
 
-<script setup>
+<script>
 import { computed } from 'vue'
 import { useStore } from 'vuex'
-const store = useStore()
 
-const name = computed(() => {
-  return store.state.user.name
-})
-const lastName = computed(() => {
-  return store.state.user.lastName
-})
-const completeName = computed(() => {
-  return `${name.value} ${lastName.value}`
-})
+export default {
+  setup() {
+    const store = useStore()
+
+    // computed
+    let newNotification = computed(() => store.state.user.newNotification)
+    let editNotification = computed(() => store.state.user.editNotification)
+    let name = computed(() => store.state.user.name)
+    let lastName = computed(() => store.state.user.lastName)
+    let completeName = computed(() => `${name.value} ${lastName.value}`)
+
+    return {
+      newNotification,
+      editNotification,
+      completeName,
+    }
+  },
+}
 </script>
