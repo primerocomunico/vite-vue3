@@ -1,12 +1,16 @@
 module.exports = {
-  mode: 'jit',
-  purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
-  theme: {
-    extend: {},
+  purge: {
+    content: ['./public/**/*.html', './src/**/*.vue'],
+    options: {
+      whitelistPatterns: [
+        /-(leave|enter|appear)(|-(to|from|active))$/,
+        /^(?!(|.*?:)cursor-move).+-move$/,
+        /^router-link(|-exact)-active$/,
+        /tooltip/,
+        /popover/,
+        /notification/,
+      ],
+    }
   },
-  variants: {
-    extend: {},
-  },
-  plugins: [],
+  // ...
 }
